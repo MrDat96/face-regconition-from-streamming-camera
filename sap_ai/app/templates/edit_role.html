@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<form action="" method="POST">
+    <label class="message">{{message}}</label>
+    <div class="form-group">
+      <label for="role_name">Role name</label>
+      <input type="text" class="form-control" name="role_name" value="{{role.name}}">
+    </div>
+
+    <div class="form-group">
+        <label for="role_power">Role Power</label>
+        <select class="form-control" style="width: max-content" name="role_power">
+            <option value="1" {% if role.power == 1:  %} selected {% endif %}>1</option>
+            <option value="2" {% if role.power == 2:  %} selected {% endif %}>2</option>
+            <option value="3" {% if role.power == 3:  %} selected {% endif %}>3</option>
+            <option value="4" {% if role.power == 4:  %} selected {% endif %}>4</option>
+        </select>
+    </div>
+    
+  
+    <button type="submit" class="btn btn-primary" name="edit_user">Update</button>
+  </form>
+
+{% endblock %}

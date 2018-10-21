@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {{message}}
+    <form action="" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="camera_id">Camera ID</label>
+            <input type="text" class="form-control" name="camera_id" value={{camera.camera_id}}>
+        </div>
+
+        <div class="form-group">
+            <label for="camera_name">Camera name</label>
+            <input type="text" class="form-control" name="camera_name" value={{camera.name}}>
+        </div>
+
+        <div class="form-group">
+            <label for="camera_type">Type</label>
+            <input type="text" class="form-control" name="camera_type" value={{camera.type}}>
+        </div>
+
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td><label for="camera_http_gateway">Http Gateway</label></td>
+                    <td><label for="camera_http_port">Port</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" name="camera_http_gateway" value={{camera.http_gateway}}></td>
+                    <td><input type="text" class="form-control" name="camera_http_port" value={{camera.http_port}}></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td><label for="camera_rtsp_gateway">Rtsp Gateway</label></td>
+                    <td><label for="camera_rtsp_port">Port</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" name="camera_rtsp_gateway" value={{camera.rtsp_gateway}}></td>
+                    <td><input type="text" class="form-control" name="camera_rtsp_port" value={{camera.rtsp_port}}></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <label for="camera_room_id">Rooms</label>
+            <select class="form-control" style="width: max-content" name="camera_room_id">
+                {% for room in rooms %}
+                    <option value="{{room.room_id}}"  {% if room.room_id == camera.room_id %} selected {% endif %} >{{room.room_id}} </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" name="add_user">Add</button>
+    </form>
+{% endblock %}

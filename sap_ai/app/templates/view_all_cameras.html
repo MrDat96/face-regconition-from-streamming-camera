@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{{message}}
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Camera ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Http</th>
+                <th>Rtsp</th>
+                <th>Date Created</th>
+                <th>Date Modified</th>
+                <th>Room ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for camera, room in cam_room %}
+                <tr>
+                    <td>{{camera.camera_id}}</td>
+                    <td>{{camera.name}}</td>
+                    <td>{{camera.type}}</td>
+                    <td>{{camera.http_gateway}}</td>
+                    <td>{{camera.rtsp_gateway}}</td>
+                    <td>{{camera.date_created}}</td>
+                    <td>{{camera.date_modified}}</td>
+                    <td>{{room.room_id}}</td>
+                    <td><a href='/cameras/view_detail/{{camera.camera_id}}'>Detail</a></td>
+                    <td><a href='/cameras/edit/{{camera.camera_id}}'>Edit</a></td>
+                    <td><a href='/cameras/delete/{{camera.camera_id}}'>Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

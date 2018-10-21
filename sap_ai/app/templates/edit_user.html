@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {{message}}
+    <form action="" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="user_id">User ID</label>
+            <input type="text" class="form-control" name="user_id" value={{user.user_id}}>
+        </div>
+
+        <div class="form-group">
+            <label for="user_first_name">First name</label>
+            <input type="text" class="form-control" name="user_first_name" value={{user.first_name}}>
+        </div>
+
+        <div class="form-group">
+            <label for="user_last_name">Last name</label>
+            <input type="text" class="form-control" name="user_last_name" value={{user.last_name}}>
+        </div>
+
+        <div class="form-group">
+            <label for="user_date_of_birth">Date Of Birth</label>
+            <input type="date" class="form-control" name="user_date_of_birth" value={{user.date_of_birth}}>
+        </div>
+
+        <div class="form-group">
+            <label for="user_role_id">Roles</label>
+            <select class="form-control" style="width: max-content" name="user_role_id">
+                {% for role in roles %}
+                    <option value="{{role.role_id}}" {% if role.role_id == user_role.role_id  %} selected {% endif %} >{{role.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+                <label for="user_occupancy">Occupancies</label>
+                <select class="form-control" style="width: max-content" name="user_occupancy">
+                    <option value="student" {% if user.occupancies == "student"  %} selected {% endif %}>Student</option>
+                    <option value="teacher"{% if user.occupancies == "teacher"  %} selected {% endif %}>Teacher</option>
+                </select>
+            </div>
+
+        <button type="submit" class="btn btn-primary" name="add_user">Update</button>
+    </form>
+{% endblock %}

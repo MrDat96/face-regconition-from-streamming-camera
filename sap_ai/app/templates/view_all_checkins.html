@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{{message}}
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>Camera</th>
+                <th>Camera Name</th>
+                <th>Room ID</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for checkin, user, camera, status in checkins %}
+                <tr>
+                    <td>{{user.user_id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{camera.camera_id}}</td>
+                    <td>{{camera.name}}</td>
+                    <td>{{camera.room_id}}</td>
+                    <td>{{checkin.time_stamp}}</td>
+                    <td>{{status.name}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{{message}}
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Date Created</th>
+                <th>Date Modified</th>
+                <th>Role</th>
+                <th>Occupancies</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user, role in users %}
+                <tr>
+                    <td>{{user['user_id']}}</td>
+                    <td>{{user['first_name']}}</td>
+                    <td>{{user['last_name']}}</td>
+                    <td>{{user['date_of_birth']}}</td>
+                    <td>{{user['date_created']}}</td>
+                    <td>{{user['date_modified']}}</td>
+                    <td>{{role['name']}}</td>
+                    <td>{{user.occupancies}}</td>
+                    <td><a href='/users/view_detail/{{user.user_id}}'>Detail</a></td>
+                    <td><a href='/users/edit/{{user.user_id}}'>Edit</a></td>
+                    <td><a href='/users/delete/{{user.user_id}}'>Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

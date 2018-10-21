@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{{message}}
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Role Id</th>
+            <th>Role Name</th>
+            <th>Role Power</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for role in roles %}
+            <tr>
+                <td>{{ role.role_id }}</td>
+                <td>{{ role.name }}</td>
+                <td>{{ role.power }}</td>
+                <td><a href='/role/edit/{{ role.role_id }}'>Edit</a></td>
+                <td><a href='/role/delete/{{ role.role_id }}'>Delete</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+

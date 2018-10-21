@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{{message}}
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Room Id</th>
+                <th>Room Name</th>
+                <th>Postion</th>
+                <th>Building</th>
+                <th>Date Created</th>
+                <th>Date Modified</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{room.room_id}}</td>
+                    <td>{{room.name}}</td>
+                    <td>{{room.position}}</td>
+                    <td>{{room.building}}</td>
+                    <td>{{room.date_created}}</td>
+                    <td>{{room.date_modified}}</td>
+                    <td><a href='/rooms/view_detail/{{room.room_id}}'>Detail</a></td>
+                    <td><a href='/rooms/edit/{{room.room_id}}'>Edit</a></td>
+                    <td><a href='/rooms/delete/{{room.room_id}}'>Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

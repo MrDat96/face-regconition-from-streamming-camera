@@ -1,0 +1,12 @@
+/camera_streaming/data
+/camera_streaming/models
+
+/sap_ai/__pycache__
+/sap_ai/models
+/sap_ai/migrations
+/sap_ai/data
+
+
+
+# Ignore all the __pycache__ level
+**/__pycache__
