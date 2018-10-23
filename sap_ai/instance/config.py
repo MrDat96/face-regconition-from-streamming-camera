@@ -1,4 +1,6 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 class Config(object):
     """Parents configuration class."""
@@ -6,6 +8,7 @@ class Config(object):
     CSRF_ENABLE = True
     SECRET = os.getenv("SECRET")
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
+    print(SQLALCHEMY_DATABASE_URI)
 
 class DevelopmentConfig(Config):
     """ Configurations for Development"""
