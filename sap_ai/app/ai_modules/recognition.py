@@ -38,3 +38,4 @@ def recognition(pathImage):
 
     print(boxes, len(boxes))
     print(labels, len(labels))
+    return labels

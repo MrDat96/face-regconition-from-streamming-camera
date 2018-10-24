@@ -14,9 +14,12 @@ from threading import Thread
 
 import requests
 import json
+import base64
+import jsonpickle
 
 #cascPath = sys.argv[1]
 DETECTING = False
+CAMERA_IP = '192.168.162.29'
 
 def start_detection():
     global DETECTING
@@ -76,21 +79,26 @@ def server_detection(pathImage):
     global DETECTING
     DETECTING = True
     print("Send ", pathImage, "To Server")
-    addr = 'http://localhost:5000'
+    addr = 'http://localhost:5001'
     #test_url = addr + '/api/test'
     test_url = addr + '/recognition/detect'
 
     # prepare headers for http request
-    content_type = 'image/jpeg'
+    content_type = 'application/json'
     headers = {'content-type': content_type}
 
     img = cv2.imread(pathImage)
     # encode image as jpeg
     _, img_encoded = cv2.imencode('.jpg', img)
     # send http request with image and receive response
-    response = requests.post(test_url, data=img_encoded.tostring(), headers=headers)
-    # decode response
-    #print(json.loads(response.text))
+
+    imgbytes = base64.b64encode(img_encoded.tostring())
+    imgstring = imgbytes.decode('utf-8')
+    data = {'camera_ip': CAMERA_IP, 'img_encoded': imgstring }
+    #print(imgbytes)
+    print(type(imgbytes))
+    response = requests.post(test_url, data=jsonpickle.encode(data), headers=headers)
+
     print("Sent to server")
     time.sleep(5)
     DETECTING = False
@@ -99,3 +107,4 @@ def server_detection(pathImage):
 if __name__ == "__main__":
     #recognition("./imageDetection.jpg")
     start_detection()
+    #server_detection("./data/20181017_15h58m46s792216.jpg")
