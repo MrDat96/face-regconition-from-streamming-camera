@@ -66,7 +66,7 @@ This respository consists 2 main part: Camera Streamming and SAP AI
 * Access to ENV_FAS environment
 ``` source ENV_FAS/bin/activate ```
 * Install library required in that enviroinment
-``` pip install flask flask_script flask-sqlalchemy psycopg2-binary flask-migrate ```
+``` pip install flask flask_script flask-sqlalchemy psycopg2-binary flask_api flask-migrate jsonpickle python-dotenv numpy python3.6-dev paho-mqtt```
 * Now you can go to *sap_ai* folder and run:
 ``` python3 run.py ``` 
 * Now you can go to browser and enter: http://localhost:5001/. But for now, your local don't have database to run get data.
