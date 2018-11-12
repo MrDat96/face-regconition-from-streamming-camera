@@ -4,9 +4,8 @@
 /sap_ai/__pycache__
 /sap_ai/models
 /sap_ai/migrations
-
-/sap_ai/data/images_data/*
-
+/sap_ai/data/images_data
+/sap_ai/data/video
 
 
 # Ignore all the __pycache__ level

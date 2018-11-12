@@ -64,7 +64,7 @@ def addNewCamera():
         except Exception as e:
             print(e)
             message='Save role error! Please try again!'
-    return render_template('add_camera.html', message=message, rooms=rooms)
+    return render_template('add_camera.html', page_name="Add a camera", message=message, rooms=rooms)
 
 
 # Edit a new Role
@@ -112,4 +112,4 @@ def editCamera(camera_id = 0):
         except Exception as e:
             print(e)
             message='Save role error! Please try again!'
-    return render_template('edit_camera.html', message=message, rooms=rooms, camera=camera)
+    return render_template('edit_camera.html', page_name="Edit camera", message=message, rooms=rooms, camera=camera)

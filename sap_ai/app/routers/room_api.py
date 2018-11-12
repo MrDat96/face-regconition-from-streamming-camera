@@ -9,7 +9,7 @@ def viewAllRoom(action="view_all", room_id=""):
     if (action == "view_all"):
         rooms = Room.get_all()
         message = ""
-        return render_template('view_all_rooms.html', rooms=rooms, message = message)
+        return render_template('view_all_rooms.html', page_name="View all rooms", rooms=rooms, message = message)
     elif (action == "delete" and room_id != ""):
         print("Delete hehe")
         room = Room.get_room_by_id(room_id=room_id)
@@ -50,7 +50,7 @@ def addNewRoom():
         except Exception as e:
             print(e)
             message='Save room error! Please try again!'
-    return render_template('add_room.html', message=message)
+    return render_template('add_room.html', page_name="Add a room", message=message)
 
 
 # Edit a new Role
@@ -89,4 +89,4 @@ def editRoom(room_id = 0):
             print(e)
             message='Save room error! Please try again!'
 
-    return render_template('edit_room.html', room=room, message=message)
+    return render_template('edit_room.html', page_name="Edit room", room=room, message=message)

@@ -15,7 +15,7 @@ def viewAllCheckin(action="view_all", checkin_id=""):
         checkins = CheckIn.get_all_with_user_camera_status() # Get a list of Check In with Foregin key User, Camera and CheckInStatus
         #print(checkins)
         message = ""
-        return render_template('view_all_checkins.html', checkins=checkins, message = message)
+        return render_template('view_all_checkins.html', page_name="View all check in", checkins=checkins, message = message)
     elif (action == "delete" and checkin_id != ""):
         checkin = CheckIn.getUserById(checkin_id=usercheckin_id_id)
         try:

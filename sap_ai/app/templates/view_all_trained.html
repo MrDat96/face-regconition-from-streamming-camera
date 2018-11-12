@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{{message}}
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trained_id, user in list %}
+                <tr>
+                    <td>{{trained_id}}</td>
+                    <td>{{user['first_name']}}</td>
+                    <td>{{user['last_name']}}</td>
+                    <td><a href='/users/view_detail/{{user.user_id}}'>Detail</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

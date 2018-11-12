@@ -9,12 +9,18 @@ from app.routers.room_api import room_api
 from app.routers.camera_api import camera_api
 from app.routers.checkin_api import checkin_api
 from app.routers.recognition_api import recognition_api
+from app.routers.training_api import training_api
 
 #from app.models.user import User
+
+UPLOAD_FOLDER = '/data/video'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', '.mp4', '.mov'])
+
 
 load_dotenv()
 config_name = os.getenv("APP_SETTINGS")
 app = create_app(config_name)
+app.secret_key = b'saplab'
 
 public = Blueprint('public', __name__)
 
@@ -39,6 +45,7 @@ app.register_blueprint(room_api)
 app.register_blueprint(camera_api)
 app.register_blueprint(checkin_api)
 app.register_blueprint(recognition_api)
+app.register_blueprint(training_api)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 5001)

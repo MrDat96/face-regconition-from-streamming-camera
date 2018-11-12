@@ -11,7 +11,7 @@ def viewAllRoute(action="view_all", role_id=0):
     if (action == "view_all"):
         roles = Role.get_all()
         message = "None"
-        return render_template('view_all_role.html', roles=roles, message = message)
+        return render_template('view_all_role.html', page_name="View all role", roles=roles, message = message)
     elif (action == "edit" and role_id != 0):
         return render_template('edit_role.html', role=role)
     elif (action == "delete" and role_id != 0):
@@ -45,7 +45,7 @@ def addNewRole():
         except Exception as e:
             print(e)
             message='Save Role Error! Please try again!'
-    return render_template('add_role.html', message=message)
+    return render_template('add_role.html', page_name="Add role", message=message)
 
     
 # Edit a new Role
@@ -75,4 +75,4 @@ def editRole(role_id = 0):
             print(e)
             message='Update Role Error! Please try again!'
 
-    return render_template('edit_role.html', role = role, message=message)
+    return render_template('edit_role.html', page_name="Edit role", role = role, message=message)

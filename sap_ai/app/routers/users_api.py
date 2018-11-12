@@ -10,11 +10,11 @@ def viewAllUsers(action="view_all", user_id=""):
     if (action == "view_all"):
         users = User.get_all_with_Role()
         message = ""
-        return render_template('view_all_users.html', users=users, message = message)
+        return render_template('view_all_users.html', page_name="View all user" ,users=users, message = message)
     elif (action == "delete" and user_id != ""):
         user = User.getUserById(user_id=user_id)
         try:
-            user.delete() 
+            user.delete()
             message = 'Delete successful'
         except Exception as e:
             print(e)
@@ -52,7 +52,7 @@ def addNewUser():
         except Exception as e:
             print(e)
             message='Save role error! Please try again!'
-    return render_template('add_user.html', message=message, roles=roles)
+    return render_template('add_user.html', page_name="Add new user", message=message, roles=roles)
 
 
 # Edit a new Role
@@ -95,4 +95,4 @@ def editUser(user_id = 0):
             print(e)
             message='Update user rrror! Please try again!'
 
-    return render_template('edit_user.html', user = user, roles=roles, user_role = user_role, message=message)
+    return render_template('edit_user.html', page_name="Edit user" ,user = user, roles=roles, user_role = user_role, message=message)

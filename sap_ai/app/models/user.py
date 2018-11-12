@@ -17,7 +17,7 @@ class User(db.Model):
 
     def __init__(self, user_id, first_name, last_name, date_of_birth, role_id, occupancies):
         """initialize with name."""
-        self.user_id = user_id
+        self.user_id = user_id.upper()
         self.first_name = first_name
         self.last_name = last_name
         self.role_id = role_id
@@ -38,15 +38,15 @@ class User(db.Model):
 
     @staticmethod
     def getUserById(user_id):
-        return User.query.filter_by(user_id=user_id).first()
+        return User.query.filter_by(user_id=user_id.upper()).first()
     
     @staticmethod
     def getUserWithRoleById(user_id):
-        return db.session.query(User, Role).filter(User.user_id == user_id).filter(User.role_id == Role.role_id).all()
+        return db.session.query(User, Role).filter(User.user_id == user_id.upper()).filter(User.role_id == Role.role_id).all()
 
     @staticmethod
     def isExist(user_id):
-        return db.session.query(db.exists().where(User.user_id == user_id)).scalar()
+        return db.session.query(db.exists().where(User.user_id == user_id.upper())).scalar()
 
     def delete(self):
         db.session.delete(self)

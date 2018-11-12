@@ -43,17 +43,19 @@ def detect():
 
     if (labels is not None):
         for label in labels:
-            print label
             if User.isExist(label):
                 checkUser = True
                 print("START to PULISH")
-                message = { 'access_code': publisher.PERMISSION, 'message': publisher.PERMISSION_MESSAGE, 'user': {'user_id': label}}
-                publisher.client_publish('hieu', json.dumps(message), hostname="192.168.43.40")
+                user = User.getUserById(label)
+                message = { 'access_code': publisher.PERMISSION, 'message': publisher.PERMISSION_MESSAGE, 'user': {'user_id': label, 'user_name': user.first_name + ' ' + user.last_name}}
+                print(message)
+                # publisher.client_publish('hieu', json.dumps(message), hostname="192.168.43.40")
                 break
 
     if (checkUser == False):
         message = { 'access_code': publisher.NO_PERMISSION, 'user': {'user_id': label}}
-        publisher.client_publish('hieu', json.dumps(message), hostname="192.168.43.40")
+        print(message)
+        # publisher.client_publish('hieu', json.dumps(message), hostname="192.168.43.40")
 
     # build a response dict to send back to client
     response = {'message': 'image received. size={}x{}'.format(img.shape[1], img.shape[0])}
