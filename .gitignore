@@ -1,4 +1,5 @@
 /camera_streaming/data
+/camera_streaming/video
 /camera_streaming/models
 
 /sap_ai/__pycache__
@@ -6,6 +7,8 @@
 /sap_ai/migrations
 /sap_ai/data/images_data
 /sap_ai/data/video
+/sap_ai/data
+/models
 
 
 # Ignore all the __pycache__ level

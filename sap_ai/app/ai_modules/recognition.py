@@ -2,8 +2,9 @@ from fas_recognition import detection, feature_extraction, classification, \
     image_utils
 from PIL import Image
 import time
+import os
 
-PATH_ENDCODE = "./data/encode_data"
+PATH_ENDCODE = os.getenv("ENCODE_PATH")
 def recognition(pathImage):
     image = Image.open(pathImage)
 
