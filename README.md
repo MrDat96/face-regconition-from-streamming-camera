@@ -90,6 +90,3 @@ Or you can clone from my fork
 
 ## Authors
     MrDAT - Ngo Thuc Dat - SE62120
-
-## License
-    This is private project is developed for learning and studying at FPT_University HN, VietNam
